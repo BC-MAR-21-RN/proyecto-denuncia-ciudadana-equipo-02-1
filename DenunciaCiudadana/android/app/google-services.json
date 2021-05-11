@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1010531888137",
+    "project_id": "denunciaciudadana-5d9ef",
+    "storage_bucket": "denunciaciudadana-5d9ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010531888137:android:513963bda9bd47497e1cd8",
+        "android_client_info": {
+          "package_name": "com.denunciaciudadana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010531888137-8g5rj3rsv6m312mqqinhqqvi3rc8m8lk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.denunciaciudadana",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1010531888137-db5mkrbtmc1r7aq6gl03fr3jlh0rt26c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAluDTTvb9Lm24QmPn8BeHjhsxZvUjDu0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010531888137-db5mkrbtmc1r7aq6gl03fr3jlh0rt26c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
