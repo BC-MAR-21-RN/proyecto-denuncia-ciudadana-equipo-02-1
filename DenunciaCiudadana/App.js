@@ -5,10 +5,9 @@ import IsLogin from './src/navigation/IsLogin';
 import LogOut from './src/navigation/LogOut';
 
 const App = () => {
-
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [user, setUser] = useState(false);
+  //const [isSignedIn, setIsSignedIn] = useState(false);
 
   function onAuthStateChanged(info) {
     setUser(info);
@@ -22,17 +21,6 @@ const App = () => {
     return subscriber;
   });
 
-  // if (initializing) {
-  //   return null;
-  // }
-
-
-  return(
-       isSignedIn 
-        ? 
-          <IsLogin user={user}/> 
-        : 
-          <LogOut/>
-  )
-}
+  return user ? <IsLogin user={user} /> : <LogOut />;
+};
 export default App;
