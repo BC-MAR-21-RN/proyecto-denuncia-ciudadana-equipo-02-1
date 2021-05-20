@@ -7,7 +7,6 @@ import LogOut from './src/navigation/LogOut';
 const App = () => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState(false);
-  //const [isSignedIn, setIsSignedIn] = useState(false);
 
   function onAuthStateChanged(info) {
     setUser(info);

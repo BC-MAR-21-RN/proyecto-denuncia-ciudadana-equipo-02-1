@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import tabFocus from '../helpers/tabFocus';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,20 +47,9 @@ const IsLogin = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            let iconName;
-            if (route.name === 'Home') {
-              iconName = focused ? 'home' : 'home-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'settings' : 'settings-outline';
-            } else if (route.name === 'Add') {
-              iconName = focused ? 'add-circle' : 'add-circle-outline';
-            } else if (route.name === 'List') {
-              iconName = focused ? 'list' : 'list-outline';
-            }
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
+          //tabFocus help us to change the focused of the icon
+          tabBarIcon: ({focused, color, size}) =>
+            tabFocus(route.name, focused, color, size),
         })}
         tabBarOptions={{
           activeTintColor: 'blue',
