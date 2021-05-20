@@ -6,11 +6,16 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import Toolbar from '../components/Toolbar';
 import styles from '../assets/styles/styles';
+import auth from '@react-native-firebase/auth';
+import {updateProfile} from '../database/Firebase';
 
 const UserSettings = () => {
-  const [username, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const user = auth().currentUser;
+
+  const [username, setUserName] = useState(!user ? '' : user.displayName);
+  const [email, setEmail] = useState(!user ? '' : user.email);
+  const [password, setPassword] = useState(!user ? '' : user.password);
+
   return (
     <View style={styles.container}>
       <FormTitle titleText={'Configuración de Usuario'} />
@@ -40,7 +45,14 @@ const UserSettings = () => {
         />
       </View>
 
-      <FormButton buttonTitle={'Guardar'} />
+      <FormButton
+        buttonTitle={'Guardar'}
+        onPress={() =>
+          !user
+            ? console.log('No hay usuario')
+            : updateProfile(username, email, password)
+        }
+      />
 
       <Toolbar />
     </View>
