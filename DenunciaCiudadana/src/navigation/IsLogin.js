@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import tabFocus from '../helpers/tabFocus';
 
 const Tab = createBottomTabNavigator();
