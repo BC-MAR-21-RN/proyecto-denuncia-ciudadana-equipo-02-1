@@ -4,12 +4,11 @@ import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-import Toolbar from '../components/Toolbar';
 import styles from '../assets/styles/styles';
 import auth from '@react-native-firebase/auth';
 import {updateProfile} from '../database/Firebase';
 
-const UserSettings = () => {
+const UserSettingsScreen = () => {
   const user = auth().currentUser;
 
   const [username, setUserName] = useState(!user ? '' : user.displayName);
@@ -53,10 +52,8 @@ const UserSettings = () => {
             : updateProfile(username, email, password)
         }
       />
-
-      <Toolbar />
     </View>
   );
 };
 
-export default UserSettings;
+export default UserSettingsScreen;
