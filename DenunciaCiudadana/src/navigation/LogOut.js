@@ -3,6 +3,8 @@ import {View, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 
+import {exampleActions} from '../actions/exampleActions';
+
 const Stack = createStackNavigator();
 
 //provisional screen
@@ -18,7 +20,7 @@ function SignInScreen() {
 function SignUpScreen() {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>SignUp!</Text> 
+      <Text>SignUp!</Text>
     </View>
   );
 }
