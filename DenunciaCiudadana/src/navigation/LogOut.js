@@ -4,6 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import styles from '../assets/styles/styles';
 
+import {exampleActions} from '../actions/exampleActions';
+
 const Stack = createStackNavigator();
 
 //provisional screen

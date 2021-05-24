@@ -4,6 +4,9 @@ import 'react-native-gesture-handler';
 import IsLogin from './src/navigation/IsLogin';
 import LogOut from './src/navigation/LogOut';
 
+import {Provider} from 'react-redux';
+import {store} from './src/store/store';
+
 const App = () => {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState(false);
@@ -20,6 +23,10 @@ const App = () => {
     return subscriber;
   });
 
-  return user ? <IsLogin user={user} /> : <LogOut />;
+  return (
+    <Provider store={store}>
+      {user ? <IsLogin user={user} /> : <LogOut />}
+    </Provider>
+  );
 };
 export default App;
