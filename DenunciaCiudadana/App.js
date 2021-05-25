@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      {user ? <IsLogin user={user} /> : <LogOut />}
+      {user ? <IsLogin user={user} /> : <LogOut />} 
     </Provider>
   );
 };

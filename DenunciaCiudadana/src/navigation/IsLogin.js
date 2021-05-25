@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import tabFocus from '../helpers/tabFocus';
 import UserSettingsScreen from '../screens/UserSettingsScreen';
 import styles from '../assets/styles/styles';
+import HomeScreen from '../screens/HomeScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,15 +22,6 @@ function AddComplaintScreen() {
   return (
     <View style={styles.container}>
       <Text>Add New complaint!</Text>
-    </View>
-  );
-}
-
-//provisional screen
-function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>Home!</Text>
     </View>
   );
 }

@@ -12,11 +12,15 @@ const stylesHome = StyleSheet.create({
         paddingHorizontal: "2.5%",
         flex: 1
     },
+    flatListContainer:{
+        flex: 1,
+    },
     complaint:{
         borderColor: 'blue',
         borderWidth: 1,
         paddingHorizontal: 5,
-        paddingTop:10
+        paddingTop:10,
+        marginVertical:15
     },
     titleComplaint:{
         fontSize:16,
