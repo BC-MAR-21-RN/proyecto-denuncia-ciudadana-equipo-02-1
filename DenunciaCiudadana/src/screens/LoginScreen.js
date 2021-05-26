@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {login} from '../database/Firebase';
+import {View, Alert} from 'react-native';
 import styles from '../assets/styles/styles';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import {useDispatch} from 'react-redux';
+import {login} from '../actions/authActions';
 
 const LoginScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
@@ -36,11 +39,14 @@ const LoginScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle="Iniciar sesión"
-        onPress={() => login(email, password)}
+        onPress={() => dispatch(login(email, password))}
       />
 
       <FormText titleText="O" />
-      <FormButton buttonTitle="Iniciar sesión con Google" />
+      <FormButton
+        buttonTitle="Iniciar sesión con Google"
+        onPress={() => Alert.alert('Iniciar sesión con Google')}
+      />
 
       <FormText
         titleText="No tienes cuenta, registrate."

@@ -1,15 +1,15 @@
 import {types} from '../types/type';
 
 const initialState = {
-  example: '',
+  userUid: '',
 };
 
-export const exampleReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.example:
+    case types.SET_USER_UID:
       return {
         ...state,
-        example: action.payload,
+        userUid: action.payload,
       };
     default:
       return state;

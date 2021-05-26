@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {createUser} from '../database/Firebase';
+import {View, Alert} from 'react-native';
 import styles from '../assets/styles/styles';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import {useDispatch} from 'react-redux';
+import {createUser} from '../actions/authActions';
 
 const RegisterScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -56,14 +59,14 @@ const RegisterScreen = ({navigation}) => {
         buttonTitle="Registrarse"
         onPress={() =>
           password === password2
-            ? createUser(userName, email, password)
-            : alert('Contraseñas no son iguales')
+            ? dispatch(createUser(userName, email, password))
+            : Alert.alert('Contraseñas no son iguales')
         }
       />
       <FormText titleText="O" />
       <FormButton
         buttonTitle="Registrarse con Google"
-        onPress={() => alert('Google')}
+        onPress={() => Alert.alert('Registro con Google')}
       />
 
       <FormText
