@@ -1,15 +1,15 @@
 import {types} from '../types/type';
 
 const initialState = {
-  example: '',
+  places: [],
 };
 
-export const exampleReducer = (state = initialState, action) => {
+export const placesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.example:
+    case types.GET_PLACES:
       return {
         ...state,
-        example: action.payload,
+        places: action.payload,
       };
     default:
       return state;

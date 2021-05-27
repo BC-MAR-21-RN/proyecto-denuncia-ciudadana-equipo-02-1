@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-import Toolbar from '../components/Toolbar';
 import styles from '../assets/styles/styles';
+import {getPlacesAPI, createPlace} from '../actions/placesActions';
 
-const AddPlaces = () => {
+const AddPlacesScreen = () => {
+  const dispatch = useDispatch();
   const [zipCode, setZipCode] = useState('');
   const [colony, setColony] = useState('');
   return (
@@ -30,11 +32,17 @@ const AddPlaces = () => {
         />
       </View>
 
-      <FormButton buttonTitle={'Guardar'} />
+      <FormButton
+        buttonTitle={'Buscar Lugar de Interés en API'}
+        onPress={() => dispatch(getPlacesAPI(zipCode))}
+      />
 
-      <Toolbar />
+      <FormButton
+        buttonTitle={'Guardar'}
+        onPress={() => createPlace(zipCode, colony)}
+      />
     </View>
   );
 };
 
-export default AddPlaces;
+export default AddPlacesScreen;

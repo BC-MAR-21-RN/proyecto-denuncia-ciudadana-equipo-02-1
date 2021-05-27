@@ -16,6 +16,9 @@ const tabFocus = (nameRoute, focused, color, size) => {
     case 'List':
       iconName = focused ? 'list' : 'list-outline';
       break;
+    case 'AddPlace':
+      iconName = focused ? 'location' : 'location-outline';
+      break;
     default:
       break;
   }

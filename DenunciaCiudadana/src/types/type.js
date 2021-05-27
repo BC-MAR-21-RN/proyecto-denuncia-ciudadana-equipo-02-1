@@ -1,3 +1,3 @@
 export const types = {
-  example: '[example] Example',
+  GET_PLACES: '[places] GET_PLACES',
 };
