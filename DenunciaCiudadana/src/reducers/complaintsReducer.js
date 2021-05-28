@@ -1,15 +1,15 @@
 import {types} from '../types/type';
 
 const initialState = {
-  example: '',
+  allComplaints: [],
 };
 
-export const exampleReducer = (state = initialState, action) => {
+export const complaintsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.example:
+    case types.loadAllComplaints:
       return {
         ...state,
-        example: action.payload,
+        allComplaints: [...action.payload],
       };
     default:
       return state;
