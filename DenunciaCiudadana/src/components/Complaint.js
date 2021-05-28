@@ -3,23 +3,20 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {stylesHome} from '../assets/styles/styleHomeDesing';
 
 const Complaint = ({item}) => {
+  const {name, area, description, image, image2} = item;
   return (
     <View style={stylesHome.complaint}>
       <View>
         <Text style={stylesHome.titleComplaint}>Nos cortaron el internet</Text>
         <View style={stylesHome.nameAndService}>
-          <Text>{item.name}</Text>
-          <Text>{item.area}</Text>
+          <Text>{name}</Text>
+          <Text>{area}</Text>
         </View>
-        <Text>{item.description}</Text>
+        <Text>{description}</Text>
       </View>
       <View>
-        {item.image ? (
-          <Image style={stylesHome.img} source={{uri: `${item.image}`}} />
-        ) : null}
-        {item.image2 ? (
-          <Image style={stylesHome.img} source={{uri: `${item.image2}`}} />
-        ) : null}
+        {image && <Image style={stylesHome.img} source={{uri: `${image}`}} />}
+        {image2 && <Image style={stylesHome.img} source={{uri: `${image2}`}} />}
       </View>
       <View style={stylesHome.buttonContainer}>
         <TouchableOpacity style={stylesHome.button}>

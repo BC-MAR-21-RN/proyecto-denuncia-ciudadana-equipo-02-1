@@ -1,4 +1,5 @@
-import { StyleSheet} from 'react-native'
+import {StyleSheet} from 'react-native'
+import {COLOR} from '../constanst/theme'
 
 const stylesHome = StyleSheet.create({
     title:{
@@ -43,13 +44,13 @@ const stylesHome = StyleSheet.create({
     },
     button:{
         alignItems: "center",
-        backgroundColor: "#E50914",
+        backgroundColor: COLOR.RED,
         padding: 10,
         borderRadius: 7,
     },
     textButton:{
-        color: 'white'
+        color: 'white',
     }
-})
+});
 
 export { stylesHome }

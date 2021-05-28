@@ -20,7 +20,7 @@ const HomeScreen = () => {
         <FlatList
           data={data}
           renderItem={({item}) => <Complaint item={item} />}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.id}
         />
       </View>
     </View>
