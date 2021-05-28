@@ -16,6 +16,9 @@ const tabFocus = (nameRoute, focused, color, size) => {
     case 'List':
       iconName = focused ? 'list' : 'list-outline';
       break;
+    case 'LogOut':
+      iconName = focused ? 'log-out' : 'log-out-outline';
+      break;
     default:
       break;
   }
