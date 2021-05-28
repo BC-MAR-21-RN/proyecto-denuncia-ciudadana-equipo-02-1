@@ -4,7 +4,7 @@ import {COLOR} from '../constanst/theme'
 const stylesHome = StyleSheet.create({
     title:{
         fontSize: 20,
-        color: 'blue',
+        color: COLOR.BLUE,
         textAlign: 'center',
         paddingTop: 20,
         fontWeight: 'bold'
@@ -17,7 +17,7 @@ const stylesHome = StyleSheet.create({
         flex: 1,
     },
     complaint:{
-        borderColor: 'blue',
+        borderColor: COLOR.BLUE,
         borderWidth: 1,
         paddingHorizontal: 5,
         paddingTop:10,
@@ -49,7 +49,7 @@ const stylesHome = StyleSheet.create({
         borderRadius: 7,
     },
     textButton:{
-        color: 'white',
+        color: COLOR.WHITE,
     }
 });
 
