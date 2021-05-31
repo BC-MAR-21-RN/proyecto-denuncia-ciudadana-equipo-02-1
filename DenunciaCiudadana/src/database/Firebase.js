@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-export const createUser = (email, password) => {
+export const createUser = (displayName, email, password) => {
   auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {

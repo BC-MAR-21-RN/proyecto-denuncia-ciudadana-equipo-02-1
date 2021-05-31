@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {stylesHome} from '../assets/styles/styleHomeDesing';
+import FormTitle from '../components/FormTitle';
 
 import Complaint from '../components/Complaint';
 
@@ -15,7 +16,7 @@ const HomeScreen = () => {
   }, []);
   return (
     <View style={stylesHome.container}>
-      <Text style={stylesHome.title}>Denuncias</Text>
+      <FormTitle titleText="Denuncias" />
       <View style={stylesHome.flatListContainer}>
         <FlatList
           data={data}
