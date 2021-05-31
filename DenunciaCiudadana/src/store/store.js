@@ -4,10 +4,12 @@ import thunk from 'redux-thunk';
 
 import {authReducer} from '../reducers/authReducer';
 import {complaintsReducer} from '../reducers/complaintsReducer';
+import {placesReducer} from '../reducers/placesReducers';
 
 const reducers = combineReducers({
   authReducer: authReducer,
   compliants: complaintsReducer,
+  places: placesReducer,
 });
 
 export const store = createStore(

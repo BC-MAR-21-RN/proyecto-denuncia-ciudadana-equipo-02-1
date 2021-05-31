@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import tabFocus from '../helpers/tabFocus';
 import HomeScreen from '../screens/HomeScreen';
 import UserSettingsScreen from '../screens/UserSettingsScreen';
+import AddPlacesScreen from '../screens/AddPlacesScreen';
 import LogoutScreen from '../screens/LogoutScreen';
 import styles from '../assets/styles/styles';
 
@@ -43,6 +44,7 @@ const LoggedIn = () => {
         <Tab.Screen name="Settings" component={UserSettingsScreen} />
         <Tab.Screen name="Add" component={AddComplaintScreen} />
         <Tab.Screen name="List" component={ListComplaintScreen} />
+        <Tab.Screen name="AddPlace" component={AddPlacesScreen} />
         <Tab.Screen name="LogOut" component={LogoutScreen} />
       </Tab.Navigator>
     </NavigationContainer>
