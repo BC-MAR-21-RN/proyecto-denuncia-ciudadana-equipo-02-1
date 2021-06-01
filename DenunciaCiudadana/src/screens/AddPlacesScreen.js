@@ -7,6 +7,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import styles from '../assets/styles/styles';
 import {getPlacesAPI, createPlace} from '../actions/placesActions';
+import translate from '../utils/language.utils.js';
 
 const AddPlacesScreen = () => {
   const dispatch = useDispatch();
@@ -14,32 +15,32 @@ const AddPlacesScreen = () => {
   const [colony, setColony] = useState('');
   return (
     <View style={styles.container}>
-      <FormTitle titleText={'Agregar Lugares de Interés'} />
+      <FormTitle titleText={translate('ADD_PLACES_TITLE')} />
       <View>
-        <FormText titleText={'Código Postal'} />
+        <FormText titleText={translate('ADD_PLACES_POSTAL_CODE')} />
         <FormInput
           labelValue={zipCode}
-          placeholderText={'Código Postal'}
+          placeholderText={translate('ADD_PLACES_POSTAL_CODE')}
           onChangeText={zipcode => setZipCode(zipcode)}
         />
       </View>
       <View>
-        <FormText titleText={'Asentamiento'} />
+        <FormText titleText={translate('ADD_PLACES_SETTLEMENT')} />
         <FormInput
           labelValue={colony}
-          placeholderText={'Asentamiento'}
+          placeholderText={translate('ADD_PLACES_SETTLEMENT')}
           onChangeText={col => setColony(col)}
         />
       </View>
 
       <FormButton
-        buttonTitle={'Buscar Lugar de Interés en API'}
+        buttonTitle={translate('ADD_PLACES_SEARCH')}
         onPress={() => dispatch(getPlacesAPI(zipCode))}
       />
 
       <FormButton
-        buttonTitle={'Guardar'}
-        onPress={() => createPlace(zipCode, colony)}
+        buttonTitle={translate('ADD_PLACES_SAVE')}
+        onPress={() => dispatch(createPlace(zipCode, colony))}
       />
     </View>
   );

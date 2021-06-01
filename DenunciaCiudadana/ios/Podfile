@@ -12,6 +12,8 @@ target 'DenunciaCiudadana' do
     :hermes_enabled => false
   )
 
+  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
+
   target 'DenunciaCiudadanaTests' do
     inherit! :complete
     # Pods for testing
