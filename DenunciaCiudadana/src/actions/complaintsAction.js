@@ -16,9 +16,37 @@ export const startLoadingComplaints = () => {
   };
 };
 
+export const LoadingMyComplaints = () => {
+  return async (dispatch, getState) => {
+    const {userUid} = getState().authReducer;
+
+    const getMyComplaints = await firestore()
+      .collection('complaints')
+      .where('user', '==', userUid)
+      .get();
+    const complaints = await [];
+
+    getMyComplaints.forEach(doc => {
+      complaints.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+
+    dispatch(setMyComplaints(complaints));
+  };
+};
+
 export const setComplaints = complaints => {
   return {
     type: types.loadAllComplaints,
     payload: complaints,
+  };
+};
+
+export const setMyComplaints = myComplaints => {
+  return {
+    type: types.loadMyComplaints,
+    payload: myComplaints,
   };
 };

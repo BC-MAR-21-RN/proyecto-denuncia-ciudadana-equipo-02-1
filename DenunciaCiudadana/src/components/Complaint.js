@@ -3,11 +3,11 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {stylesHome} from '../assets/styles/styleHomeDesing';
 
 const Complaint = ({item}) => {
-  const {name, area, description, image, image2} = item;
+  const {title, name, area, description, image, image2} = item;
   return (
     <View style={stylesHome.complaint}>
       <View>
-        <Text style={stylesHome.titleComplaint}>Nos cortaron el internet</Text>
+        <Text style={stylesHome.titleComplaint}>{title}</Text>
         <View style={stylesHome.nameAndService}>
           <Text>{name}</Text>
           <Text>{area}</Text>
