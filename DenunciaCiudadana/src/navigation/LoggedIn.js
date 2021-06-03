@@ -36,12 +36,8 @@ const LoggedIn = () => {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Settings" component={UserSettingsScreen} />
         <Tab.Screen name="Add" component={AddComplaintScreen} />
-<<<<<<< HEAD
-        <Tab.Screen name="List" component={ListComplaintScreen} />
         <Tab.Screen name="AddPlace" component={AddPlacesScreen} />
-=======
         <Tab.Screen name="List" component={MyComplaints} />
->>>>>>> Desing of the screens of my complaints
         <Tab.Screen name="LogOut" component={LogoutScreen} />
       </Tab.Navigator>
     </NavigationContainer>
