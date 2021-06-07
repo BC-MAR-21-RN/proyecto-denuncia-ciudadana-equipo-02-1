@@ -4,5 +4,5 @@ export default {
   ADD_PLACES_SETTLEMENT: 'Settlement',
   ADD_PLACES_SEARCH: 'Search Place of Interest in API',
   ADD_PLACES_SAVE: 'Save',
-  THERE_IS_NOT_COMPLAINT: 'There is not complaint yet'
+  THERE_IS_NOT_COMPLAINT: 'There is not complaint yet',
 };
