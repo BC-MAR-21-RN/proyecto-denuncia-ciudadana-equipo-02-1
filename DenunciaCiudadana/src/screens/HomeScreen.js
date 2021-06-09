@@ -1,12 +1,10 @@
 import React, {useEffect} from 'react';
 import {View, FlatList} from 'react-native';
 import {stylesHome} from '../assets/styles/styleHomeDesing';
-import FormTitle from '../components/FormTitle';
-
-import Complaint from '../components/Complaint';
-
 import {useDispatch, useSelector} from 'react-redux';
 import {startLoadingComplaints} from '../actions/complaintsAction';
+import FormTitle from '../components/FormTitle';
+import Complaint from '../components/Complaint';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();

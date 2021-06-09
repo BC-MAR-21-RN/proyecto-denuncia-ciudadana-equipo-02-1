@@ -7,18 +7,11 @@ import HomeScreen from '../screens/HomeScreen';
 import UserSettingsScreen from '../screens/UserSettingsScreen';
 import AddPlacesScreen from '../screens/AddPlacesScreen';
 import LogoutScreen from '../screens/LogoutScreen';
+import MyComplaints from '../screens/MyComplaints';
 import styles from '../assets/styles/styles';
 
 const Tab = createBottomTabNavigator();
 
-//Provisional screen
-function ListComplaintScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>My list of complaints</Text>
-    </View>
-  );
-}
 //provisional screen
 function AddComplaintScreen() {
   return (
@@ -43,8 +36,8 @@ const LoggedIn = () => {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Settings" component={UserSettingsScreen} />
         <Tab.Screen name="Add" component={AddComplaintScreen} />
-        <Tab.Screen name="List" component={ListComplaintScreen} />
         <Tab.Screen name="AddPlace" component={AddPlacesScreen} />
+        <Tab.Screen name="List" component={MyComplaints} />
         <Tab.Screen name="LogOut" component={LogoutScreen} />
       </Tab.Navigator>
     </NavigationContainer>

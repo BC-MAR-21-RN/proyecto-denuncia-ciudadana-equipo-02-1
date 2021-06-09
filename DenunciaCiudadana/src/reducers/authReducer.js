@@ -1,7 +1,7 @@
 import {types} from '../types/type';
 
 const initialState = {
-  userUid: '',
+  userUid: null,
 };
 
 export const authReducer = (state = initialState, action) => {

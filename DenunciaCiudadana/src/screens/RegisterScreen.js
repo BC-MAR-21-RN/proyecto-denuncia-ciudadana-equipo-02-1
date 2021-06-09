@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Alert} from 'react-native';
+import {View, Alert, TouchableOpacity} from 'react-native';
 import styles from '../assets/styles/styles';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
@@ -69,10 +69,9 @@ const RegisterScreen = ({navigation}) => {
         onPress={() => Alert.alert('Registro con Google')}
       />
 
-      <FormText
-        titleText="Si ya tienes cuenta, inicia sesión."
-        onPress={() => navigation.navigate('LoginScreen')}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+        <FormText titleText="Si ya tienes cuenta, inicia sesión." />
+      </TouchableOpacity>
     </View>
   );
 };

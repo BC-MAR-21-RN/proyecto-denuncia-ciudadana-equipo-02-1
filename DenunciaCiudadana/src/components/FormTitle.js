@@ -2,7 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 import stylesForm from '../assets/styles/stylesForm';
 
-const FormInput = ({titleText, ...rest}) => {
+const FormTitle = ({titleText, ...rest}) => {
   return (
     <Text style={stylesForm.title} {...rest}>
       {titleText}
@@ -10,4 +10,4 @@ const FormInput = ({titleText, ...rest}) => {
   );
 };
 
-export default FormInput;
+export default FormTitle;
