@@ -37,6 +37,23 @@ export const LoadingMyComplaints = () => {
   };
 };
 
+export const createComplaint = newComplaint => {
+  return async dispatch => {
+    firestore()
+      .collection('complaints')
+      .add(newComplaint)
+      .then(() => {
+        dispatch(setCreateComplaint());
+      });
+  };
+};
+
+export const setCreateComplaint = () => {
+  return {
+    type: types.createComplaint,
+  };
+};
+
 export const setComplaints = complaints => {
   return {
     type: types.loadAllComplaints,
