@@ -6,7 +6,7 @@ import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import {useDispatch} from 'react-redux';
-import {createUser} from '../actions/authActions';
+import {createUser, loginWithGoogle} from '../actions/authActions';
 
 const RegisterScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const RegisterScreen = ({navigation}) => {
       <FormText titleText="O" />
       <FormButton
         buttonTitle="Registrarse con Google"
-        onPress={() => Alert.alert('Registro con Google')}
+        onPress={() => dispatch(loginWithGoogle())}
       />
 
       <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>

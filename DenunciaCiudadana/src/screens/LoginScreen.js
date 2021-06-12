@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {View, Alert, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import styles from '../assets/styles/styles';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import {useDispatch} from 'react-redux';
-import {login} from '../actions/authActions';
+import {login, loginWithGoogle, logoutWithGoogle} from '../actions/authActions';
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -45,12 +45,17 @@ const LoginScreen = ({navigation}) => {
       <FormText titleText="O" />
       <FormButton
         buttonTitle="Iniciar sesión con Google"
-        onPress={() => Alert.alert('Iniciar sesión con Google')}
+        onPress={() => dispatch(loginWithGoogle())}
       />
 
       <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
         <FormText titleText="No tienes cuenta, registrate." />
       </TouchableOpacity>
+
+      <FormButton
+        buttonTitle="Cerrar sesión con Google"
+        onPress={() => dispatch(logoutWithGoogle())}
+      />
     </View>
   );
 };
