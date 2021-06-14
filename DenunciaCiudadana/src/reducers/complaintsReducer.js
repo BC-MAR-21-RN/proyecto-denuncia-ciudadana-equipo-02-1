@@ -17,6 +17,10 @@ export const complaintsReducer = (state = initialState, action) => {
         ...state,
         myComplaints: [...action.payload],
       };
+    case types.createComplaint:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
