@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {startLoadingComplaints} from '../actions/complaintsAction';
 import FormTitle from '../components/FormTitle';
 import Complaint from '../components/Complaint';
+import translate from '../utils/language.utils.js';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const HomeScreen = () => {
   }, []);
   return (
     <View style={stylesHome.container}>
-      <FormTitle titleText="Denuncias" />
+      <FormTitle titleText={translate('COMPLAINTS')} />
       <View style={stylesHome.flatListContainer}>
         <FlatList
           data={data}

@@ -22,6 +22,7 @@ const AddPlacesScreen = () => {
           labelValue={zipCode}
           placeholderText={translate('ADD_PLACES_POSTAL_CODE')}
           onChangeText={zipcode => setZipCode(zipcode)}
+          type={'number'}
         />
       </View>
       <View>
@@ -30,6 +31,7 @@ const AddPlacesScreen = () => {
           labelValue={colony}
           placeholderText={translate('ADD_PLACES_SETTLEMENT')}
           onChangeText={col => setColony(col)}
+          type={'text'}
         />
       </View>
 
@@ -39,7 +41,7 @@ const AddPlacesScreen = () => {
       />
 
       <FormButton
-        buttonTitle={translate('ADD_PLACES_SAVE')}
+        buttonTitle={translate('SAVE')}
         onPress={() => dispatch(createPlace(zipCode, colony))}
       />
     </View>

@@ -7,6 +7,7 @@ import FormButton from '../components/FormButton';
 import styles from '../assets/styles/styles';
 import auth from '@react-native-firebase/auth';
 import {updateProfile} from '../database/Firebase';
+import translate from '../utils/language.utils.js';
 
 const UserSettingsScreen = () => {
   const user = auth().currentUser;
@@ -19,33 +20,36 @@ const UserSettingsScreen = () => {
     <View style={styles.container}>
       <FormTitle titleText={'Configuración de Usuario'} />
       <View>
-        <FormText titleText={'Nombre de Usuario'} />
+        <FormText titleText={translate('USERNAME')} />
         <FormInput
           labelValue={username}
-          placeholderText={'Nombre de Usuario'}
+          placeholderText={translate('USERNAME')}
           onChangeText={userName => setUserName(userName)}
+          type={'username'}
         />
       </View>
       <View>
-        <FormText titleText={'Correo electrónico'} />
+        <FormText titleText={translate('EMAIL')} />
         <FormInput
           labelValue={email}
-          placeholderText={'Correo electrónico'}
+          placeholderText={translate('EMAIL')}
           onChangeText={userEmail => setEmail(userEmail)}
+          type={'email'}
         />
       </View>
       <View>
-        <FormText titleText={'Contraseña'} />
+        <FormText titleText={translate('PASSWORD')} />
         <FormInput
           labelValue={password}
-          placeholderText={'Contraseña'}
+          placeholderText={translate('PASSWORD')}
           onChangeText={userPassword => setPassword(userPassword)}
+          type={'password'}
           secureTextEntry={true}
         />
       </View>
 
       <FormButton
-        buttonTitle={'Guardar'}
+        buttonTitle={translate('SAVE')}
         onPress={() =>
           !user
             ? console.log('No hay usuario')

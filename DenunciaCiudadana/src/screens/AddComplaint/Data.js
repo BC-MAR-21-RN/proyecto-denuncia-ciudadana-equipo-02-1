@@ -25,7 +25,8 @@ const Data = ({route, navigation}) => {
         <FormInput
           labelValue={title}
           placeholderText={'Corte de luz'}
-          onChangeText={title => setTitle(title)}
+          onChangeText={titleComplaint => setTitle(titleComplaint)}
+          type={'text'}
         />
       </View>
       <View>
@@ -34,7 +35,10 @@ const Data = ({route, navigation}) => {
           labelValue={description}
           placeholderText={'Ayer por la noche nos cortaron la luz'}
           multiline
-          onChangeText={description => setDescription(description)}
+          onChangeText={descriptionComplaint =>
+            setDescription(descriptionComplaint)
+          }
+          type={'text'}
         />
       </View>
       <FormButton

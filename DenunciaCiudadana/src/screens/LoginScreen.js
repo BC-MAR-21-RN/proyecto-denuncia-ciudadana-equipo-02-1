@@ -7,6 +7,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import {useDispatch} from 'react-redux';
 import {login} from '../actions/authActions';
+import translate from '../utils/language.utils.js';
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -15,41 +16,43 @@ const LoginScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   return (
     <View style={styles.container}>
-      <FormTitle titleText="Iniciar sesión" />
+      <FormTitle titleText={translate('SIGN_IN')} />
       <View>
-        <FormText titleText="Correo electrónico" />
+        <FormText titleText={translate('EMAIL')} />
         <FormInput
           labelValue={email}
-          placeholderText="Email"
+          placeholderText={translate('EMAIL')}
           onChangeText={userEmail => setEmail(userEmail)}
+          type={'email'}
           autoCapitalize="none"
           keyboardType="email-address"
         />
       </View>
 
       <View>
-        <FormText titleText="Contraseña" />
+        <FormText titleText={translate('PASSWORD')} />
         <FormInput
           labelValue={password}
-          placeholderText="Contraseña"
+          placeholderText={translate('PASSWORD')}
           onChangeText={userPassword => setPassword(userPassword)}
+          type={'password'}
           secureTextEntry={true}
         />
       </View>
 
       <FormButton
-        buttonTitle="Iniciar sesión"
+        buttonTitle={translate('SIGN_IN')}
         onPress={() => dispatch(login(email, password))}
       />
 
       <FormText titleText="O" />
       <FormButton
-        buttonTitle="Iniciar sesión con Google"
-        onPress={() => Alert.alert('Iniciar sesión con Google')}
+        buttonTitle={translate('SIGN_IN_GOOGLE')}
+        onPress={() => Alert.alert(translate('SIGN_IN_GOOGLE'))}
       />
 
       <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
-        <FormText titleText="No tienes cuenta, registrate." />
+        <FormText titleText={translate('NAV_SIGN_UP')} />
       </TouchableOpacity>
     </View>
   );

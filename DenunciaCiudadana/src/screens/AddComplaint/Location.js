@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, KeyboardAvoidingView} from 'react-native';
+import {View, KeyboardAvoidingView, ScrollView} from 'react-native';
 import FormTitle from '../../components/FormTitle';
 import FormText from '../../components/FormText';
 import FormInput from '../../components/FormInput';
@@ -20,14 +20,15 @@ const Location = ({route, navigation}) => {
     <KeyboardAvoidingView
       style={stylesAddComplaint.container}
       behavior="padding">
-      <View>
+      <ScrollView>
         <FormTitle titleText={'Dirección de los hechos'} />
         <View>
           <FormText titleText={'Estado'} />
           <FormInput
             labelValue={state}
             placeholderText={'Colima'}
-            onChangeText={state => setState(state)}
+            onChangeText={stateComplaint => setState(stateComplaint)}
+            type={'text'}
           />
         </View>
         <View>
@@ -35,7 +36,8 @@ const Location = ({route, navigation}) => {
           <FormInput
             labelValue={city}
             placeholderText={'Colima'}
-            onChangeText={city => setCity(city)}
+            onChangeText={cityComplaint => setCity(cityComplaint)}
+            type={'text'}
           />
         </View>
         <View>
@@ -45,7 +47,8 @@ const Location = ({route, navigation}) => {
             placeholderText={'28046'}
             keyboardType="numeric"
             maxLength={5}
-            onChangeText={zipCode => setZipCode(zipCode)}
+            onChangeText={zipCodeComplaint => setZipCode(zipCodeComplaint)}
+            type={'number'}
           />
         </View>
         <View>
@@ -53,7 +56,8 @@ const Location = ({route, navigation}) => {
           <FormInput
             labelValue={colony}
             placeholderText={'Colima'}
-            onChangeText={colony => setColony(colony)}
+            onChangeText={colonyComplaint => setColony(colonyComplaint)}
+            type={'text'}
           />
         </View>
         <View>
@@ -61,7 +65,8 @@ const Location = ({route, navigation}) => {
           <FormInput
             labelValue={street}
             placeholderText={'Estapilla'}
-            onChangeText={street => setStreet(street)}
+            onChangeText={streetComplaint => setStreet(streetComplaint)}
+            type={'text'}
           />
         </View>
         <View>
@@ -70,7 +75,10 @@ const Location = ({route, navigation}) => {
             labelValue={numberHouse}
             placeholderText={'1231'}
             keyboardType="numeric"
-            onChangeText={numberHouse => setNumberHouse(numberHouse)}
+            onChangeText={numberHouseComplaint =>
+              setNumberHouse(numberHouseComplaint)
+            }
+            type={'text'}
           />
         </View>
         <FormButton
@@ -87,7 +95,7 @@ const Location = ({route, navigation}) => {
             })
           }
         />
-      </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };

@@ -19,8 +19,8 @@ const Claimant = () => {
       <View style={stylesAddComplaint.containerRadioBtn}>
         <RadioButtonRN
           data={data}
-          selectedBtn={name => setName(name.label)}
-          textStyle={{fontSize: 16, color: 'black'}}
+          selectedBtn={nameComplaint => setName(nameComplaint.label)}
+          textStyle={stylesAddComplaint.radioButton}
           boxDeactiveBgColor="transparent"
           activeColor="#007aff"
           deactiveColor="black"

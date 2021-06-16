@@ -7,6 +7,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import {useDispatch} from 'react-redux';
 import {createUser} from '../actions/authActions';
+import translate from '../utils/language.utils.js';
 
 const RegisterScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -17,60 +18,64 @@ const RegisterScreen = ({navigation}) => {
   const [password2, setPassword2] = useState('');
   return (
     <View style={styles.container}>
-      <FormTitle titleText="Regístrate" />
+      <FormTitle titleText={translate('SIGN_UP')} />
       <View>
-        <FormText titleText="Usuario" />
+        <FormText titleText={translate('USERNAME')} />
         <FormInput
           labelValue={userName}
-          placeholderText="Usuario"
+          placeholderText={translate('USERNAME')}
           onChangeText={userNames => setUserName(userNames)}
+          type={'username'}
         />
       </View>
       <View>
-        <FormText titleText="Correo electrónico" />
+        <FormText titleText={translate('EMAIL')} />
         <FormInput
           labelValue={email}
-          placeholderText="Email"
+          placeholderText={translate('EMAIL')}
           onChangeText={userEmail => setEmail(userEmail)}
+          type={'email'}
           autoCapitalize="none"
           keyboardType="email-address"
         />
       </View>
       <View>
-        <FormText titleText="Contraseña" />
+        <FormText titleText={translate('PASSWORD')} />
         <FormInput
           labelValue={password}
-          placeholderText="Contraseña"
+          placeholderText={translate('PASSWORD')}
           onChangeText={userPassword => setPassword(userPassword)}
+          type={'password'}
           secureTextEntry={true}
         />
       </View>
       <View>
-        <FormText titleText="Repetir Contraseña" />
+        <FormText titleText={translate('REPEAT_PASSWORD')} />
         <FormInput
           labelValue={password2}
-          placeholderText="Repetir Contraseña"
+          placeholderText={translate('REPEAT_PASSWORD')}
           onChangeText={userPassword2 => setPassword2(userPassword2)}
+          type={'password'}
           secureTextEntry={true}
         />
       </View>
 
       <FormButton
-        buttonTitle="Registrarse"
+        buttonTitle={translate('SIGN_UP')}
         onPress={() =>
           password === password2
             ? dispatch(createUser(userName, email, password))
-            : Alert.alert('Contraseñas no son iguales')
+            : Alert.alert(translate('PASSWORD_SAME'))
         }
       />
       <FormText titleText="O" />
       <FormButton
-        buttonTitle="Registrarse con Google"
-        onPress={() => Alert.alert('Registro con Google')}
+        buttonTitle={translate('SIGN_UP_GOOGLE')}
+        onPress={() => Alert.alert(translate('SIGN_UP_GOOGLE'))}
       />
 
       <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-        <FormText titleText="Si ya tienes cuenta, inicia sesión." />
+        <FormText titleText={translate('NAV_SIGN_IN')} />
       </TouchableOpacity>
     </View>
   );
