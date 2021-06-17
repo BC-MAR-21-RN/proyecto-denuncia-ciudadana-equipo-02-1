@@ -51,14 +51,14 @@ const stylesHome = StyleSheet.create({
   textButton: {
     color: COLOR.WHITE,
   },
-  containerNoComplaint:{
+  containerNoComplaint: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  textNoComplaint:{
-    fontSize: 18
-  }
+  textNoComplaint: {
+    fontSize: 18,
+  },
 });
 
 export {stylesHome};

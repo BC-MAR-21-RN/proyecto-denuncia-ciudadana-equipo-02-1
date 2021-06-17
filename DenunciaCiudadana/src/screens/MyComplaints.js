@@ -8,12 +8,12 @@ import Complaint from '../components/Complaint';
 import ThereIsNotComplaint from '../components/ThereIsNotComplaint';
 
 const MyComplaints = () => {
-   const dispatch = useDispatch();
-   const data = useSelector(state => state.compliants.myComplaints);
+  const dispatch = useDispatch();
+  const data = useSelector(state => state.compliants.myComplaints);
 
-   useEffect(() => {
+  useEffect(() => {
     dispatch(LoadingMyComplaints());
-  },[]);
+  }, []);
 
   return (
     <View style={stylesHome.container}>
