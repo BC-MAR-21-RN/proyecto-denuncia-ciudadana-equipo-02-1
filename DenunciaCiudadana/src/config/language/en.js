@@ -17,4 +17,5 @@ export default {
   ADD_PLACES_SETTLEMENT: 'Settlement',
   ADD_PLACES_SEARCH: 'Search Catalog by Zip Code',
   THERE_IS_NOT_COMPLAINT: 'There is not complaint yet',
+  VALIDATION_MSG_BUTTON: 'There are missing or incorrect items',
 };

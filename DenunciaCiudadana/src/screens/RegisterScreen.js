@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import {View, Alert, TouchableOpacity} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import styles from '../assets/styles/styles';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-import {useDispatch} from 'react-redux';
 import {createUser} from '../actions/authActions';
 import translate from '../utils/language.utils.js';
 
 const RegisterScreen = ({navigation}) => {
   const dispatch = useDispatch();
+  const isValid = useSelector(state => state.validations.isValid);
 
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -63,9 +64,9 @@ const RegisterScreen = ({navigation}) => {
       <FormButton
         buttonTitle={translate('SIGN_UP')}
         onPress={() =>
-          password === password2
+          password === password2 && isValid
             ? dispatch(createUser(userName, email, password))
-            : Alert.alert(translate('PASSWORD_SAME'))
+            : Alert.alert(translate('VALIDATION_MSG_BUTTON'))
         }
       />
       <FormText titleText="O" />

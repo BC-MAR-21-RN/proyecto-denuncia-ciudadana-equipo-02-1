@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, ScrollView} from 'react-native';
+import {View, KeyboardAvoidingView, ScrollView, Alert} from 'react-native';
+import {useSelector} from 'react-redux';
 import FormTitle from '../../components/FormTitle';
 import FormText from '../../components/FormText';
 import FormInput from '../../components/FormInput';
 import FormButton from '../../components/FormButton';
 import {stylesAddComplaint} from '../../assets/styles/stylesAddComplaint';
+import translate from '../../utils/language.utils.js';
 
 const Location = ({route, navigation}) => {
+  const isValid = useSelector(state => state.validations.isValid);
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
@@ -84,15 +87,17 @@ const Location = ({route, navigation}) => {
         <FormButton
           buttonTitle={'Siguiente'}
           onPress={() =>
-            navigation.navigate('Evidence', {
-              name,
-              area,
-              title,
-              description,
-              timestamp,
-              dateEvent,
-              location,
-            })
+            isValid
+              ? navigation.navigate('Evidence', {
+                  name,
+                  area,
+                  title,
+                  description,
+                  timestamp,
+                  dateEvent,
+                  location,
+                })
+              : Alert.alert(translate('VALIDATION_MSG_BUTTON'))
           }
         />
       </ScrollView>

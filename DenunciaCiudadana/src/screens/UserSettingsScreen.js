@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
+import {useSelector} from 'react-redux';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
@@ -11,6 +12,7 @@ import translate from '../utils/language.utils.js';
 
 const UserSettingsScreen = () => {
   const user = auth().currentUser;
+  const isValid = useSelector(state => state.validations.isValid);
 
   const [username, setUserName] = useState(!user ? '' : user.displayName);
   const [email, setEmail] = useState(!user ? '' : user.email);
@@ -51,9 +53,9 @@ const UserSettingsScreen = () => {
       <FormButton
         buttonTitle={translate('SAVE')}
         onPress={() =>
-          !user
-            ? console.log('No hay usuario')
-            : updateProfile(username, email, password)
+          isValid
+            ? updateProfile(username, email, password)
+            : Alert.alert(translate('VALIDATION_MSG_BUTTON'))
         }
       />
     </View>

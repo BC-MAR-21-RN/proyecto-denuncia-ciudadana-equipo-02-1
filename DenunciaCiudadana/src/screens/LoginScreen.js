@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import {View, Alert, TouchableOpacity} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import styles from '../assets/styles/styles';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-import {useDispatch} from 'react-redux';
 import {login} from '../actions/authActions';
 import translate from '../utils/language.utils.js';
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
+  const isValid = useSelector(state => state.validations.isValid);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,7 +43,11 @@ const LoginScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle={translate('SIGN_IN')}
-        onPress={() => dispatch(login(email, password))}
+        onPress={() =>
+          isValid
+            ? dispatch(login(email, password))
+            : Alert.alert(translate('VALIDATION_MSG_BUTTON'))
+        }
       />
 
       <FormText titleText="O" />

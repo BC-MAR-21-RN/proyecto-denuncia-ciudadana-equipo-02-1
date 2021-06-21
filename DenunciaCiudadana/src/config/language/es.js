@@ -17,4 +17,5 @@ export default {
   ADD_PLACES_SETTLEMENT: 'Asentamiento',
   ADD_PLACES_SEARCH: 'Buscar en catálogo por Código Postal',
   THERE_IS_NOT_COMPLAINT: 'No hay denuncias todavia',
+  VALIDATION_MSG_BUTTON: 'Hay elementos sin agregar o incorrectos',
 };

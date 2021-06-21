@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
+import {useSelector} from 'react-redux';
 import FormTitle from '../../components/FormTitle';
 import FormText from '../../components/FormText';
 import FormInput from '../../components/FormInput';
 import FormButton from '../../components/FormButton';
 import {stylesAddComplaint} from '../../assets/styles/stylesAddComplaint';
 import PickerSelect from '../../components/PickerSelect';
+import translate from '../../utils/language.utils.js';
 
 const Data = ({route, navigation}) => {
+  const isValid = useSelector(state => state.validations.isValid);
   const name = route.params;
   const [area, setArea] = useState('');
   const [title, setTitle] = useState('');
@@ -44,7 +47,9 @@ const Data = ({route, navigation}) => {
       <FormButton
         buttonTitle={'Siguiente'}
         onPress={() =>
-          navigation.navigate('Dates', {name, area, title, description})
+          isValid
+            ? navigation.navigate('Dates', {name, area, title, description})
+            : Alert.alert(translate('VALIDATION_MSG_BUTTON'))
         }
       />
     </View>
