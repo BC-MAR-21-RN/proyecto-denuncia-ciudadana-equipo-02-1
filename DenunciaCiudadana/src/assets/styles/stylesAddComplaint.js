@@ -13,6 +13,10 @@ const stylesAddComplaint = StyleSheet.create({
   containerRadioBtn: {
     width: windowWidth / 1.2,
   },
+  radioButton: {
+    fontSize: 16,
+    color: 'black',
+  },
   datefield: {
     marginTop: 5,
     marginBottom: 10,

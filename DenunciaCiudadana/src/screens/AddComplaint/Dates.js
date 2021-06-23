@@ -31,7 +31,9 @@ const Dates = ({route, navigation}) => {
           maximumDate={new Date()}
           minimumDate={new Date(2010, 1, 1)}
           styleInput={stylesAddComplaint.datefield}
-          onSubmit={dateEvent => setDateEvent(dateEvent.toUTCString())}
+          onSubmit={dateEventComplaint =>
+            setDateEvent(dateEventComplaint.toUTCString())
+          }
         />
       </View>
       <FormButton

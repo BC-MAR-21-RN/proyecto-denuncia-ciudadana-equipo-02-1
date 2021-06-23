@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {View, Alert} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import FormTitle from '../components/FormTitle';
 import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
@@ -11,6 +11,7 @@ import translate from '../utils/language.utils.js';
 
 const AddPlacesScreen = () => {
   const dispatch = useDispatch();
+  const isValid = useSelector(state => state.validations.isValid);
   const [zipCode, setZipCode] = useState('');
   const [colony, setColony] = useState('');
   return (
@@ -22,6 +23,7 @@ const AddPlacesScreen = () => {
           labelValue={zipCode}
           placeholderText={translate('ADD_PLACES_POSTAL_CODE')}
           onChangeText={zipcode => setZipCode(zipcode)}
+          type={'number'}
         />
       </View>
       <View>
@@ -30,6 +32,7 @@ const AddPlacesScreen = () => {
           labelValue={colony}
           placeholderText={translate('ADD_PLACES_SETTLEMENT')}
           onChangeText={col => setColony(col)}
+          type={'text'}
         />
       </View>
 
@@ -39,8 +42,12 @@ const AddPlacesScreen = () => {
       />
 
       <FormButton
-        buttonTitle={translate('ADD_PLACES_SAVE')}
-        onPress={() => dispatch(createPlace(zipCode, colony))}
+        buttonTitle={translate('SAVE')}
+        onPress={() =>
+          isValid
+            ? dispatch(createPlace(zipCode, colony))
+            : Alert.alert(translate('VALIDATION_MSG_BUTTON'))
+        }
       />
     </View>
   );
