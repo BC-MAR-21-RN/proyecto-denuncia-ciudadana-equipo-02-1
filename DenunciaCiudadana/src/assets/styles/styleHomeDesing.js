@@ -40,6 +40,7 @@ const stylesHome = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
+    alignItems: 'center',
     paddingBottom: 5,
   },
   button: {
@@ -47,11 +48,16 @@ const stylesHome = StyleSheet.create({
     backgroundColor: COLOR.RED,
     padding: 10,
     borderRadius: 7,
+    marginLeft: 10
   },
   textButton: {
     color: COLOR.WHITE,
   },
-  containerNoComplaint: {
+  LikesNumber:{
+    color: COLOR.BLUE,
+    fontWeight: 'bold',
+  },
+  containerNoComplaint:{
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

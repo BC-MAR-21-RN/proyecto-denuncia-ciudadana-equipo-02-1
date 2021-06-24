@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, ScrollView, Alert} from 'react-native';
-import {useSelector} from 'react-redux';
+import {View, ScrollView} from 'react-native';
 import FormTitle from '../../components/FormTitle';
 import FormText from '../../components/FormText';
 import FormInput from '../../components/FormInput';
@@ -20,10 +19,8 @@ const Location = ({route, navigation}) => {
   const location = {state, city, zipCode, colony, street, numberHouse};
 
   return (
-    <KeyboardAvoidingView
-      style={stylesAddComplaint.container}
-      behavior="padding">
-      <ScrollView>
+    <ScrollView >
+      <View style={stylesAddComplaint.container}>
         <FormTitle titleText={'Dirección de los hechos'} />
         <View>
           <FormText titleText={'Estado'} />
@@ -100,8 +97,8 @@ const Location = ({route, navigation}) => {
               : Alert.alert(translate('VALIDATION_MSG_BUTTON'))
           }
         />
+      </View>
       </ScrollView>
-    </KeyboardAvoidingView>
   );
 };
 
