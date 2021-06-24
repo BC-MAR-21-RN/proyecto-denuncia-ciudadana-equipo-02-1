@@ -11,11 +11,11 @@ export const getPlacesAPI = value => {
       const res = await axios.get(`${BASE_URL}`);
       if (res.data) {
         let allPlacesAPI = [];
-        res.data.forEach(value => {
-          let colony = value.response.asentamiento;
+        res.data.forEach(element => {
+          let colony = element.response.asentamiento;
           allPlacesAPI.push({
             label: colony,
-            value: colony,
+            element: colony,
           });
         });
         dispatch({
@@ -42,7 +42,7 @@ export const createPlace = (zipcode, settlement) => {
       existPlaces = documentSnapshot.data();
     });
 
-    if (existPlaces != '') {
+    if (existPlaces !== '') {
       Alert.alert('Este lugar ya ha sido añadido antes.');
     } else {
       firestore()

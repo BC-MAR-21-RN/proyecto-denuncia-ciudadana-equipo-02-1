@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, Alert} from 'react-native';
+import {useSelector} from 'react-redux';
 import FormTitle from '../../components/FormTitle';
 import FormText from '../../components/FormText';
 import FormInput from '../../components/FormInput';
@@ -19,7 +20,7 @@ const Location = ({route, navigation}) => {
   const location = {state, city, zipCode, colony, street, numberHouse};
 
   return (
-    <ScrollView >
+    <ScrollView>
       <View style={stylesAddComplaint.container}>
         <FormTitle titleText={'Dirección de los hechos'} />
         <View>
@@ -98,7 +99,7 @@ const Location = ({route, navigation}) => {
           }
         />
       </View>
-      </ScrollView>
+    </ScrollView>
   );
 };
 
