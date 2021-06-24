@@ -1,0 +1,9 @@
+[
+  {label: 'Seguridad', value: 'Seguridad'},
+  {label: 'Servicios', value: 'Servicios'},
+  {label: 'Infraestructura', value: 'Infraestructura'},
+  {label: 'Política', value: 'Política'},
+  {label: 'Educación', value: 'Educación'},
+  {label: 'Derechos humanos', value: 'Derechos humanos'},
+  {label: 'Desastres naturales', value: 'Desastres naturales'},
+];

@@ -1,7 +1,7 @@
 import {types} from '../types/type';
 
 const initialState = {
-  places: [],
+  allPlaces: [],
 };
 
 export const placesReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ export const placesReducer = (state = initialState, action) => {
     case types.GET_PLACES:
       return {
         ...state,
-        places: action.payload,
+        allPlaces: action.payload,
       };
     default:
       return state;

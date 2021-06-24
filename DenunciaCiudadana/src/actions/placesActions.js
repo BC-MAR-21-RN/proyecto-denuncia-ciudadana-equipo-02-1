@@ -2,17 +2,25 @@ import axios from 'axios';
 import firestore from '@react-native-firebase/firestore';
 import {types} from '../types/type';
 import {API_URL, API_METHOD, API_KEY} from '@env';
+import {Alert} from 'react-native';
 
 export const getPlacesAPI = value => {
   return async dispatch => {
     const BASE_URL = `${API_URL}/${API_METHOD}/${value}?=type=simplified&token=${API_KEY}`;
     try {
       const res = await axios.get(`${BASE_URL}`);
-      console.log(res.data);
       if (res.data) {
+        let allPlacesAPI = [];
+        res.data.forEach(value => {
+          let colony = value.response.asentamiento;
+          allPlacesAPI.push({
+            label: colony,
+            value: colony,
+          });
+        });
         dispatch({
           type: types.GET_PLACES,
-          payload: res.data,
+          payload: allPlacesAPI,
         });
       }
     } catch (error) {
@@ -22,16 +30,31 @@ export const getPlacesAPI = value => {
 };
 
 export const createPlace = (zipcode, settlement) => {
-  return dispatch => {
-    firestore()
+  return async dispatch => {
+    const places = await firestore()
       .collection('places')
-      .add({
-        zipCode: zipcode,
-        colony: settlement,
-      })
-      .then(() => {
-        console.log('Place added!');
-      });
+      .where('zipCode', '==', zipcode)
+      .where('colony', '==', settlement)
+      .get();
+
+    let existPlaces = '';
+    places.forEach(documentSnapshot => {
+      existPlaces = documentSnapshot.data();
+    });
+
+    if (existPlaces != '') {
+      Alert.alert('Este lugar ya ha sido añadido antes.');
+    } else {
+      firestore()
+        .collection('places')
+        .add({
+          zipCode: zipcode,
+          colony: settlement,
+        })
+        .then(() => {
+          Alert.alert('¡Lugar añadido!');
+        });
+    }
   };
 };
 
@@ -43,4 +66,13 @@ export const getPlaces = async zipcode => {
   places.forEach(documentSnapshot => {
     console.log(documentSnapshot.data());
   });
+};
+
+export const cleanPlaces = () => {
+  return async dispatch => {
+    dispatch({
+      type: types.GET_PLACES,
+      payload: [],
+    });
+  };
 };
