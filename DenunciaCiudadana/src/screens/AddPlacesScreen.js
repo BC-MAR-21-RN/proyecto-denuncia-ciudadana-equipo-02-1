@@ -6,14 +6,17 @@ import FormText from '../components/FormText';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import styles from '../assets/styles/styles';
-import {getPlacesAPI, createPlace} from '../actions/placesActions';
+import {getPlacesAPI, createPlace, cleanPlaces} from '../actions/placesActions';
 import translate from '../utils/language.utils.js';
+import PickerSelect from '../components/PickerSelect';
 
 const AddPlacesScreen = () => {
   const dispatch = useDispatch();
   const isValid = useSelector(state => state.validations.isValid);
+  const dataPlaces = useSelector(state => state.places.allPlaces);
   const [zipCode, setZipCode] = useState('');
   const [colony, setColony] = useState('');
+
   return (
     <View style={styles.container}>
       <FormTitle titleText={translate('ADD_PLACES_TITLE')} />
@@ -28,19 +31,27 @@ const AddPlacesScreen = () => {
       </View>
       <View>
         <FormText titleText={translate('ADD_PLACES_SETTLEMENT')} />
-        <FormInput
-          labelValue={colony}
-          placeholderText={translate('ADD_PLACES_SETTLEMENT')}
-          onChangeText={col => setColony(col)}
-          type={'text'}
-        />
+        {dataPlaces.length === 0 ? (
+          <FormInput
+            labelValue={colony}
+            placeholderText={translate('ADD_PLACES_SETTLEMENT')}
+            onChangeText={col => setColony(col)}
+            type={'text'}
+          />
+        ) : (
+          <PickerSelect text={colony} setText={setColony} data={dataPlaces} />
+        )}
       </View>
-
       <FormButton
         buttonTitle={translate('ADD_PLACES_SEARCH')}
         onPress={() => dispatch(getPlacesAPI(zipCode))}
       />
-
+      {dataPlaces.length !== 0 && (
+        <FormButton
+          buttonTitle={'Escribir asentamiento'}
+          onPress={() => dispatch(cleanPlaces())}
+        />
+      )}
       <FormButton
         buttonTitle={translate('SAVE')}
         onPress={() =>

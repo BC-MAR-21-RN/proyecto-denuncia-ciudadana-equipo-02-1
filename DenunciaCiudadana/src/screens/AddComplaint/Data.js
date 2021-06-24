@@ -8,6 +8,7 @@ import FormButton from '../../components/FormButton';
 import {stylesAddComplaint} from '../../assets/styles/stylesAddComplaint';
 import PickerSelect from '../../components/PickerSelect';
 import translate from '../../utils/language.utils.js';
+import dataArea from '../../database/dataArea.json';
 
 const Data = ({route, navigation}) => {
   const isValid = useSelector(state => state.validations.isValid);
@@ -21,7 +22,7 @@ const Data = ({route, navigation}) => {
       <FormTitle titleText={'Datos generales'} />
       <View>
         <FormText titleText={'Área'} />
-        <PickerSelect text={area} setText={setArea} />
+        <PickerSelect text={area} setText={setArea} data={dataArea} />
       </View>
       <View>
         <FormText titleText={'Título'} />
