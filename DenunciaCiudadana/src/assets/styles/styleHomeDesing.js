@@ -48,16 +48,16 @@ const stylesHome = StyleSheet.create({
     backgroundColor: COLOR.RED,
     padding: 10,
     borderRadius: 7,
-    marginLeft: 10
+    marginLeft: 10,
   },
   textButton: {
     color: COLOR.WHITE,
   },
-  LikesNumber:{
+  LikesNumber: {
     color: COLOR.BLUE,
     fontWeight: 'bold',
   },
-  containerNoComplaint:{
+  containerNoComplaint: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
