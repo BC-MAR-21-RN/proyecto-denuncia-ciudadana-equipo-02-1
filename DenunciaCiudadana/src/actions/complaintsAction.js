@@ -2,38 +2,65 @@ import {types} from '../types/type';
 import firestore from '@react-native-firebase/firestore';
 
 export const startLoadingComplaints = () => {
-  return async dispatch => {
-    const getComplaints = await firestore().collection('complaints').get();
-    const complaints = await [];
-
-    getComplaints.forEach(doc => {
-      complaints.push({
-        id: doc.id,
-        ...doc.data(),
+  return dispatch => {
+    firestore()
+      .collection('complaints')
+      .onSnapshot(querySnapshot => {
+        const complaints = [];
+        querySnapshot.forEach(doc => {
+          complaints.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+          dispatch(setComplaints(complaints));
+        });
       });
-    });
-    dispatch(setComplaints(complaints));
+  };
+};
+
+export const likeButtonPress = (id, likes) => {
+  return dispatch => {
+    const allLikes = likes + 1;
+    firestore()
+      .collection('complaints')
+      .doc(id)
+      .update({
+        likes: allLikes,
+      })
+      .then(() => {});
+  };
+};
+
+export const unlikeButtonPress = (id, likes) => {
+  return dispatch => {
+    const allLikes = likes - 1;
+    firestore()
+      .collection('complaints')
+      .doc(id)
+      .update({
+        likes: allLikes,
+      })
+      .then(() => {});
   };
 };
 
 export const LoadingMyComplaints = () => {
-  return async (dispatch, getState) => {
+  return (dispatch, getState) => {
     const {userUid} = getState().authReducer;
 
-    const getMyComplaints = await firestore()
+    firestore()
       .collection('complaints')
       .where('user', '==', userUid)
-      .get();
-    const complaints = await [];
-
-    getMyComplaints.forEach(doc => {
-      complaints.push({
-        id: doc.id,
-        ...doc.data(),
+      .onSnapshot(querySnapshot => {
+        const complaints = [];
+        querySnapshot.forEach(doc => {
+          complaints.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+          dispatch(setMyComplaints(complaints));
+        });
       });
-    });
-
-    dispatch(setMyComplaints(complaints));
   };
 };
 

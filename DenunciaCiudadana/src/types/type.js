@@ -11,4 +11,6 @@ export const types = {
   TEXT_VALIDATION: '[validation] Verify that the text is valid',
   ERROR_VALIDATION: '[validation] Show validation error message',
   IS_VALID: '[validation] Shows if the validation is true or false',
+  LIKE: '[complaints] onpres Button Like',
+  UNLIKE: '[complaints] onpress buton Unlike',
 };

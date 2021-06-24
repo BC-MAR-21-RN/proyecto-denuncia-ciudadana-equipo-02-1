@@ -1,9 +1,25 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image} from 'react-native';
 import {stylesHome} from '../assets/styles/styleHomeDesing';
+import LikeButton from './LikeButton';
+import {useDispatch} from 'react-redux';
+import {likeButtonPress, unlikeButtonPress} from '../actions/complaintsAction';
 
 const Complaint = ({item}) => {
-  const {title, name, area, description, image, image2} = item;
+  const {id, title, name, area, description, image, image2, likes} = item;
+  const dispatch = useDispatch();
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const handleLike = () => {
+    if (isEnabled) {
+      dispatch(unlikeButtonPress(id, likes));
+      setIsEnabled(false);
+    } else {
+      dispatch(likeButtonPress(id, likes));
+      setIsEnabled(true);
+    }
+  };
+
   return (
     <View style={stylesHome.complaint}>
       <View>
@@ -18,10 +34,8 @@ const Complaint = ({item}) => {
         {image && <Image style={stylesHome.img} source={{uri: `${image}`}} />}
         {image2 && <Image style={stylesHome.img} source={{uri: `${image2}`}} />}
       </View>
-      <View style={stylesHome.buttonContainer}>
-        <TouchableOpacity style={stylesHome.button}>
-          <Text style={stylesHome.textButton}>Me Gusta</Text>
-        </TouchableOpacity>
+      <View style={stylesHome.buttonAndLike}>
+        <LikeButton likes={likes} handleLike={handleLike} />
       </View>
     </View>
   );

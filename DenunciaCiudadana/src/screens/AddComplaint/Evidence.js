@@ -57,6 +57,7 @@ const Evidence = ({route, navigation}) => {
           timestamp,
           title,
           user,
+          likes: 0,
         }),
       );
       dispatch(startLoadingComplaints());
